@@ -41,6 +41,7 @@ reaper.Undo_BeginBlock("script")
 -----
 
 item = reaper.GetSelectedMediaItem(0,0)
+itemstart   = reaper.GetMediaItemInfo_Value(item, "D_POSITION")
 take = reaper.GetActiveTake(item)
 pcmSource = reaper.GetMediaItemTake_Source(take)
 
@@ -67,7 +68,7 @@ markerIDX=0
 
 for time,name in pairs(tCues) do
   
-    reaper.SetTempoTimeSigMarker(0,-1,time,-1,-1,name,0,0,0)
+    reaper.SetTempoTimeSigMarker(0,-1,time+itemstart,-1,-1,name,0,0,0)
 
 end
 
